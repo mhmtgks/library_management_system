@@ -22,5 +22,11 @@ namespace LIBRARY_PROJECT
             m1.ShowDialog();
             this.Close();
         }
+
+        private void Manager_Confirm_Load(object sender, EventArgs e)
+        {
+          DataSet d1 = library.dbworks.InfoPull("1","2");
+            dataGridView1.DataSource = d1.Tables[0];
+        }
     }
 }

@@ -22,5 +22,20 @@ namespace LIBRARY_PROJECT
             m1.ShowDialog();
             this.Close();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            DataSet ds1 = library.dbworks.BookPull(textBox1.Text);
+            dataGridView1.DataSource = ds1.Tables[0];
+           /* if (ds1.Tables[0].Rows.Count == 0)
+                MessageBox.Show("Kayıt Yok");*/
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            DataSet ds1 = library.dbworks.MemberPull(textBox2.Text);
+            dataGridView2.DataSource = ds1.Tables[0];
+
+        }
     }
 }
