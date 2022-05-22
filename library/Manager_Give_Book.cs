@@ -37,5 +37,21 @@ namespace LIBRARY_PROJECT
             dataGridView2.DataSource = ds1.Tables[0];
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string a = dataGridView2.SelectedRows[0].Cells[0].Value.ToString();
+            string b = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            string c = dataGridView2.SelectedRows[0].Cells[1].Value.ToString();
+             try
+             {
+                 bool x =library.dbworks.AddInfo(b,a,c, "1");
+                if (x == false) { MessageBox.Show("book not avaible "); }
+                else MessageBox.Show("added");
+             }
+             catch (ArgumentOutOfRangeException) { }
+
+
+        }
     }
 }

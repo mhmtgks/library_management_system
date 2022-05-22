@@ -22,5 +22,32 @@ namespace LIBRARY_PROJECT
             m1.ShowDialog();
             this.Close();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            DataSet ds1 = library.dbworks.BookPull(textBox1.Text);
+            dataGridView1.DataSource = ds1.Tables[0];
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            try{ 
+            textBox2.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString(); }
+            catch (ArgumentOutOfRangeException) { }
+            catch (InvalidCastException) { }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string a = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+           
+            try
+            {
+                bool x = library.dbworks.AddInfo(a, library.dbworks.idmembers, library.dbworks.namemembers, "2");
+                if (x == false) { MessageBox.Show("book not avaible "); }
+                else MessageBox.Show("added");
+            }
+            catch (ArgumentOutOfRangeException) { }
+        }
     }
 }
