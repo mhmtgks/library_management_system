@@ -22,5 +22,11 @@ namespace LIBRARY_PROJECT
             m1.ShowDialog();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+          library.dbworks.AddBook(textBox1.Text,textBox2.Text);
+            MessageBox.Show("Book Added");
+        }
     }
 }
